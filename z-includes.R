@@ -5,13 +5,14 @@
 # 20200120 first commit
 
 
-# test data
+# Create the original test data
+# for simulations.
 fn_initial_conditions<-function(){
   
   #iterations =15   #rows =10   #cols =10   #cells <- rows*cols
   # numberOFZombies to start with   #zombieStart =1
   # number of Immune  #immuneStart =250
-  a1<-c(15,10,10,1,1)
+  a1<-c(15,10,10,1,1) # lots of repetition
   a2<-c(15,10,10,1,1)
   a3<-c(15,10,10,1,1)
   a4<-c(15,10,10,1,1)
@@ -69,22 +70,17 @@ fn_initial_conditions<-function(){
   
   d<-as.matrix( rbind(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,a32,a33,a34,a35,a36,a37,a38,a39,a40,a41,a42,a43,a44,a45,a46,a47,a48,a49,a50,a51,a52,a53,a54,a55))
   #d<-as.matrix( rbind(a1))
-  #matrix( c(1,2,3,), c(4,5,6), nrow = 2, byrow = TRUE)
   return(d)
 }
 
-
-
-###########
-# Functions
-###########
+# ******************************
+# Functions for main
+# ******************************
 fn_doIterations <-function (testName,popMatrix, numRows,numCols){
   cells = numRows*numCols
-  #print(popMatrix)
+
   fn_plotZombie(testName,popMatrix,0, numRows,  numCols)
-  
-  #dfnamesR<-c( "test","step", "rows","cols","human","zombie","immune")
-  #iters0<-data.frame(testName0,0,0,0,0,0,0)
+    
   iters = fn_iterationStore(testName,popMatrix, 0, numRows,numCols)
   infectionMatrix<-fn_resetInfections(0, cells, numRows)
   for(step in 1:(iterations+1)){
@@ -106,19 +102,14 @@ fn_doIterations <-function (testName,popMatrix, numRows,numCols){
     fn_plotZombie(testName,popMatrix,step, numRows,  numCols)
     iters2 = fn_iterationStore(testName,popMatrix, step, numRows,numCols)
     iters<-rbind(iters,iters2)
-    #print(popMatrix)
     # reset matrix after iteration
     infectionMatrix<-fn_resetInfections(0, cells, rows)
   }
-  #print(iters)
-  #return(popMatrix)
   return(iters)
 }
 
+# Plot the population matrix at a step
 fn_plotZombie<-function(testName,population,step, numRows,  numCols){
-  #dev.off()
-  #print(as.vector(population))
-  
   Is<-table(population)
   numI<-Is[names(Is)=='I']
   perI<-(numI/(numRows*numCols))*100
@@ -135,10 +126,6 @@ fn_plotZombie<-function(testName,population,step, numRows,  numCols){
     
     }
   )
-  #grid.arrange(grobs=gs, ncol=numCols, 
-  #             top="top label", bottom="bottom\nlabel", 
-  #             left="left label", right="right label")
-  #top=textGrob("Title", gp=gpar(fontsize=15,font=8)
   title =paste(testName,"- ","Percentage Immune ",perI,"% - Step=", step,sep="")
   
   folder<-"/Users/jason/Source/RCode/zombie/media/"
@@ -147,37 +134,31 @@ fn_plotZombie<-function(testName,population,step, numRows,  numCols){
   png(filename=path)
   grid.arrange(grobs=gs, ncol=numCols, 
               top=textGrob(title, gp=gpar(fontsize=15,font=8)  ))
-  
-  
-  
   dev.off()
-  
-  
 }
 
+# Generate random X and Y for matrix
 fn_randomXY<-function(){
-  
   randomRow <- sample(1:rows, 1)
   randomCol <- sample(1:cols, 1)
   xy <- c(randomRow, randomCol)
-  #xy <- c(1, 2)
   return(xy)
 }
 
+# If the current cell is a zombie
+# then generate a random X Y to attempt
+# to infect another cell
 fn_checkPopulationCells<-function(x){
   isZombie<-fn_isZombie(x)
   if (isZombie =="Y"){
     randomXY<-fn_randomXY()
   } else{
-    randomXY<-c(FALSE, FALSE)
+    randomXY<-c(FALSE, FALSE) # no infection
   }
-  
   return(randomXY)
 } 
 
-
-
-
+# is the current Cell a zombie
 fn_isZombie<-function(x){
   if(x==zombie){
     return("Y") 
@@ -186,6 +167,7 @@ fn_isZombie<-function(x){
   }
 }
 
+# is the current cell human
 fn_isHuman<-function(x){
   if(x==human){
     return("Y") 
@@ -194,7 +176,8 @@ fn_isHuman<-function(x){
   }
 }
 
-
+# Function to try and infect humans
+# cell by cell
 fn_infectPopulation<-function(popM, infM){
   for (rw in 1:(rows)){
     for (col in 1:(cols)){
@@ -208,9 +191,10 @@ fn_infectPopulation<-function(popM, infM){
   return(popM)
 }
 
+# Initial conditions based on test params
 # Create zombies and immunue
 fn_zombies_and_immune<-function(popData, immuneStart, zombieStart ){
-  # add some random imumune
+  # add some random imumune humans
   for (iStep in 1:(immuneStart)){
     xy =fn_randomXY()
     popData[xy[1],xy[2]] <-immune
@@ -221,7 +205,6 @@ fn_zombies_and_immune<-function(popData, immuneStart, zombieStart ){
     popData[xy[1],xy[2]] <-zombie
     
   }
-  
   return(popData)
 }
 
@@ -254,7 +237,6 @@ fn_iterationStore<-function(testName,popMatrix, step, numRows,numCols){
   } else{
     numI<-0
   }
-  #row1<-data.frame(iterations,rows,cols,prepopData[names(prepopData)=='Z'],prepopData[names(prepopData)=='H'],prepopData[names(prepopData)=='I'],postpopData[names(postpopData)=='Z'],postpopData[names(postpopData)=='H'],postpopData[names(postpopData)=='I'])
   
   dfnamesR<-c( "test","step", "rows","cols","human","zombie","immune")
   rowStep<-data.frame(testName,step, numRows,numCols, numH, numZ, numI)
@@ -267,3 +249,7 @@ fn_iterationStore<-function(testName,popMatrix, step, numRows,numCols){
 fn_test<-function(x){
   return ("hello")
 }
+
+# ********************************* 
+# End
+# ********************************* 
