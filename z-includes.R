@@ -12,7 +12,7 @@ fn_initial_conditions<-function(){
   #iterations =15   #rows =10   #cols =10   #cells <- rows*cols
   # numberOFZombies to start with   #zombieStart =1
   # number of Immune  #immuneStart =250
-  a1<-c(15,10,10,1,1) # lots of repetition
+  a1<-c(15,10,10,1,1)
   a2<-c(15,10,10,1,1)
   a3<-c(15,10,10,1,1)
   a4<-c(15,10,10,1,1)
@@ -57,24 +57,24 @@ fn_initial_conditions<-function(){
   a43<-c(25,100,100,1,1)
   a44<-c(25,100,100,1,1)
   a45<-c(25,100,100,1,1)
-  a46<-c(25,100,100,1,1000)
-  a47<-c(25,100,100,1,2000)
-  a48<-c(25,100,100,1,3000)
-  a49<-c(25,100,100,1,5000)
-  a50<-c(25,100,100,1,6000)
-  a51<-c(25,100,100,1,35000)
+  a46<-c(25,100,100,1,15000)
+  a47<-c(25,100,100,1,40000)
+  a48<-c(25,100,100,1,10000)
+  a49<-c(25,100,100,1,20000)
+  a50<-c(25,100,100,1,30000)
+  a51<-c(25,100,100,1,25000)
   a52<-c(25,100,100,1,35000)
   a53<-c(25,100,100,1,35000)
   a54<-c(25,100,100,1,35000)
   a55<-c(25,100,100,1,35000)
   
   d<-as.matrix( rbind(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,a32,a33,a34,a35,a36,a37,a38,a39,a40,a41,a42,a43,a44,a45,a46,a47,a48,a49,a50,a51,a52,a53,a54,a55))
-  #d<-as.matrix( rbind(a1))
+  d<-as.matrix( rbind(a1,a2,a3))
   return(d)
 }
 
 # ******************************
-# Functions for main
+# Functions for z-main
 # ******************************
 fn_doIterations <-function (testName,popMatrix, numRows,numCols){
   cells = numRows*numCols
@@ -127,8 +127,9 @@ fn_plotZombie<-function(testName,population,step, numRows,  numCols){
     }
   )
   title =paste(testName,"- ","Percentage Immune ",perI,"% - Step=", step,sep="")
-  
-  folder<-"/Users/jason/Source/RCode/zombie/media/"
+  cwd<-getwd()
+  folder<-paste(cwd,"/media/",sep="")
+  #folder<-"/Users/jason/Source/RCode/zombie/media/"
   pad<-sprintf("%02d", step)
   path<-paste(folder,testName,"-",pad,".png", sep="")
   png(filename=path)

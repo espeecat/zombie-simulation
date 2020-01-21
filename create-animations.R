@@ -1,25 +1,24 @@
-  # create-animations.R
-  # Script to create animated GIFs of
-  # specific tests
-  #
-  # jason bailey
-  # 20200120 first commit
+# create-animations.R
+# Script to create animated GIFs of
+# specific tests
+#
+# jason bailey
+# 20200120 first commit
 
 #install.packages("magick")
 library(magick)
-imagesPath <- ('/Users/jason/Source/RCode/zombie/media/')
-
+# set this to location of images
+imagesPath <- '/Users/jason/Source/RCode/zombie-simulation/media/'
 # Select tests for which to generate Gifs
-testsToAnimate<-c('Test 1', 'Test 21')
+testsToAnimate<-c('Test 1', 'Test 21','Test 28','Test 32','Test 41','Test 46','Test 47','Test 48', 'Test 49', 'Test 49', 'Test 50', 'Test 51', 'Test 52')
+testsToAnimate<-c('Test 1', 'Test 2','Test 3')
 
-# Loops through PNGs with above prefixes
-# to generate animated gifs
 for (testName in testsToAnimate){
-  fileSearch<-paste("^",testName,'(.*).png$', sep="")
+  fileSearch<-paste("^",testName,'-','(.*).png$', sep="")
   list <- list.files(imagesPath,pattern=fileSearch)
   imagesAll <- paste0(imagesPath, list)
   images <- image_read(imagesAll)
-  animation <- image_animate(images, fps = 0.8, loop = 5)
+  animation <- image_animate(images, fps = 0.8, loop = 1)
   saveFileName<-paste(testName,".gif", sep="")
   filePath<-paste0(imagesPath, saveFileName)
   image_write(animation, filePath,format = "gif")
