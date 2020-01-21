@@ -9,9 +9,7 @@ install.packages("gridExtra")
 library(gridExtra)
 library(grid)
 
-# Bad to use paths. Should use rproject
-# Set this to where R files are located
-setwd("/Users/jason/Source/RCode/zombie-simulation/")
+# Open Rproj to setwd() nicely
 source("z-includes.R")
 
 # Symbols for plots

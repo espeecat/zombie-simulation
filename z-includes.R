@@ -127,9 +127,9 @@ fn_plotZombie<-function(testName,population,step, numRows,  numCols){
     }
   )
   title =paste(testName,"- ","Percentage Immune ",perI,"% - Step=", step,sep="")
-  cwd<-getwd()
-  folder<-paste(cwd,"/media/",sep="")
-  #folder<-"/Users/jason/Source/RCode/zombie/media/"
+  #cwd<-getwd()
+  #folder<-paste(cwd,"/media/",sep="")
+  folder<-'./media/'
   pad<-sprintf("%02d", step)
   path<-paste(folder,testName,"-",pad,".png", sep="")
   png(filename=path)

@@ -8,7 +8,8 @@
 #install.packages("magick")
 library(magick)
 # set this to location of images
-imagesPath <- '/Users/jason/Source/RCode/zombie-simulation/media/'
+
+imagesPath <- './media/'  # iin the project subfolder
 # Select tests for which to generate Gifs
 testsToAnimate<-c('Test 1', 'Test 21','Test 28','Test 32','Test 41','Test 46','Test 47','Test 48', 'Test 49', 'Test 49', 'Test 50', 'Test 51', 'Test 52')
 testsToAnimate<-c('Test 1', 'Test 2','Test 3')
