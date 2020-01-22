@@ -3,7 +3,10 @@ Zombie simulation with R
 
 Using R to simulate the spread of a zombie infection with different levels of immunity in the population.
 
-![Sample of simulation showing Zombie infection](sample.gif?raw=true "Sample Zombie simulation")   
+![Sample of simulation showing Zombie infection](sample.gif?raw=true "Sample Zombie simulation") 
+
+This simulates a population as a square grid of humans (H), zombies (Z) and humans with immunity (I). The purpose of the simulation is to test the effects of different levels of immunity. Does immunity protect those that are not immune? 
+
 
 ## Requirements  
 This is using R and RStudio to run the code and show images.
@@ -32,18 +35,7 @@ Ensure that you've set the directories in your code to ensure the images are wri
 
 In this code there is a folder containing the R files and a subfolder called media.
 
-You can set the directory in the files with:
-
-```R
-setwd("/your/location/of/RFiles/")
-```
-Edit the z-main.R  
-
-Edit create-animations.R to point to the folder you want to store images:  
-
-```R
-imagesPath <- ('/your/media/folder/location/')
-```  
+Open the Rproj (R project) file in RStudio to set the working directory. The media folder is assumed to be a sub-folder of the main working directory.
 
 ### Run the code 
 
@@ -58,9 +50,3 @@ Alternatively, you can call the file in the Rstudio console using:
 ```R
 source("z-main.R") 
 ```
-
-
-
-
-<code>
-</code>
