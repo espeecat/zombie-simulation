@@ -12,51 +12,51 @@ fn_initial_conditions<-function(){
   #iterations =15   #rows =10   #cols =10   #cells <- rows*cols
   # numberOFZombies to start with   #zombieStart =1
   # number of Immune  #immuneStart =250
-  a1<-c(15,10,10,1,1)
-  a2<-c(15,10,10,1,1)
-  a3<-c(15,10,10,1,1)
-  a4<-c(15,10,10,1,1)
-  a5<-c(15,10,10,1,1)
-  a6<-c(15,10,10,1,1)
-  a7<-c(15,10,10,1,1)
-  a8<-c(15,10,10,1,1)
-  a9<-c(15,10,10,1,1)
-  a10<-c(15,10,10,1,1)
-  a12<-c(15,10,10,1,1)
-  a11<-c(15,10,10,1,1)
-  a13<-c(15,10,10,1,1)
-  a14<-c(15,10,10,1,1)
-  a15<-c(15,10,10,1,1)
-  a16<-c(15,10,10,1,250)
-  a17<-c(15,10,10,1,250)
-  a18<-c(15,10,10,1,250)
-  a19<-c(15,10,10,1,250)
-  a20<-c(15,10,10,1,250)
-  a21<-c(15,10,10,1,299)
-  a22<-c(15,10,10,1,299)
-  a23<-c(15,10,10,1,299)
-  a24<-c(15,10,10,1,299)
-  a25<-c(15,10,10,1,299)
-  a26<-c(15,10,10,1,299)
-  a27<-c(15,10,10,1,250)
-  a28<-c(15,10,10,1,250)
-  a29<-c(15,10,10,1,250)
-  a30<-c(15,10,10,1,250)
-  a31<-c(15,10,10,1,50)
-  a32<-c(15,10,10,1,50)
-  a33<-c(15,10,10,1,50)
-  a34<-c(15,10,10,1,50)
-  a35<-c(15,10,10,1,60)
-  a36<-c(15,10,10,1,70)
-  a37<-c(15,10,10,1,80)
-  a38<-c(15,10,10,1,80)
-  a39<-c(15,10,10,1,70)
-  a40<-c(15,10,10,1,60)
-  a41<-c(25,100,100,1,1)
-  a42<-c(25,100,100,1,1)
-  a43<-c(25,100,100,1,1)
-  a44<-c(25,100,100,1,1)
-  a45<-c(25,100,100,1,1)
+  a1<-c(15,10,10,1,0)
+  a2<-c(15,10,10,1,0)
+  a3<-c(15,10,10,1,0)
+  a4<-c(15,10,10,1,0)
+  a5<-c(15,10,10,1,0)
+  a6<-c(15,10,10,1,0)
+  a7<-c(15,10,10,1,0)
+  a8<-c(15,10,10,1,0)
+  a9<-c(15,10,10,1,0)
+  a10<-c(20,20,20,1,0)
+  a12<-c(20,20,20,1,0)
+  a11<-c(20,20,20,1,0)
+  a13<-c(15,10,10,1,0)
+  a14<-c(15,10,10,1,0)
+  a15<-c(15,10,10,1,0)
+  a16<-c(20,10,10,1,250)
+  a17<-c(20,10,10,1,250)
+  a18<-c(20,10,10,1,250)
+  a19<-c(20,10,10,1,250)
+  a20<-c(20,10,10,1,250)
+  a21<-c(20,10,10,1,299)
+  a22<-c(20,20,20,1,599)
+  a23<-c(20,20,20,1,599)
+  a24<-c(20,10,10,1,299)
+  a25<-c(20,10,10,1,299)
+  a26<-c(20,10,10,1,299)
+  a27<-c(20,10,10,1,250)
+  a28<-c(20,10,10,1,250)
+  a29<-c(20,10,10,1,250)
+  a30<-c(20,10,10,1,250)
+  a31<-c(20,10,10,1,50)
+  a32<-c(20,10,10,1,50)
+  a33<-c(20,10,10,1,150)
+  a34<-c(20,10,10,1,150)
+  a35<-c(20,10,10,1,160)
+  a36<-c(20,10,10,1,170)
+  a37<-c(20,20,20,1,780)
+  a38<-c(20,20,20,1,880)
+  a39<-c(20,20,20,1,1070)
+  a40<-c(20,20,20,1,1160)
+  a41<-c(25,100,100,1,0)
+  a42<-c(25,100,100,1,0)
+  a43<-c(25,100,100,1,0)
+  a44<-c(25,100,100,1,0)
+  a45<-c(25,100,100,1,0)
   a46<-c(25,100,100,1,15000)
   a47<-c(25,100,100,1,40000)
   a48<-c(25,100,100,1,10000)
@@ -69,7 +69,7 @@ fn_initial_conditions<-function(){
   a55<-c(25,100,100,1,35000)
   
   d<-as.matrix( rbind(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,a32,a33,a34,a35,a36,a37,a38,a39,a40,a41,a42,a43,a44,a45,a46,a47,a48,a49,a50,a51,a52,a53,a54,a55))
-  d<-as.matrix( rbind(a1,a2,a3))
+  #d<-as.matrix( rbind(a1,a2,a3))
   return(d)
 }
 
@@ -113,6 +113,9 @@ fn_plotZombie<-function(testName,population,step, numRows,  numCols){
   Is<-table(population)
   numI<-Is[names(Is)=='I']
   perI<-(numI/(numRows*numCols))*100
+  if (length(perI)<1){
+    perI<-0 # 0% immunity
+  }
   
   gs <- lapply(as.vector(population), function(zhi){
       if(zhi=="H"){
@@ -126,7 +129,7 @@ fn_plotZombie<-function(testName,population,step, numRows,  numCols){
     
     }
   )
-  title =paste(testName,"- ","Percentage Immune ",perI,"% - Step=", step,sep="")
+  title =paste(testName," - ","Immune=",perI,"% - Step=", step,sep="")
   #cwd<-getwd()
   #folder<-paste(cwd,"/media/",sep="")
   folder<-'./media/'
@@ -196,9 +199,12 @@ fn_infectPopulation<-function(popM, infM){
 # Create zombies and immunue
 fn_zombies_and_immune<-function(popData, immuneStart, zombieStart ){
   # add some random imumune humans
-  for (iStep in 1:(immuneStart)){
+  cnt<-immuneStart
+  iStep<-1
+  while (iStep<=cnt) {   
     xy =fn_randomXY()
     popData[xy[1],xy[2]] <-immune
+    iStep=iStep+1
   }
   # add some random zombies
   for (zStep in 1:(zombieStart)){

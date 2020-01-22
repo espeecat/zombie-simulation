@@ -5,7 +5,7 @@
 # jason bailey
 # 20200120 first commit
 
-install.packages("gridExtra")
+#install.packages("gridExtra")
 library(gridExtra)
 library(grid)
 
@@ -43,6 +43,11 @@ for (rowNum in 1:nrow(testParams)){
   population<-matrix( rep( human, len=cells), nrow = rows)
   population<-fn_zombies_and_immune(population, numimmune, numzombies )
   prepopData=table(population)
+  if(length(prepopData[names(prepopData)=='I'])<1){
+    immStart<-0
+  } else{
+    immStart<-prepopData[names(prepopData)=='I']
+  }
 
   # Do iterartions for each test
   iters<-fn_doIterations(testName,population, rows,cols)
@@ -51,8 +56,7 @@ for (rowNum in 1:nrow(testParams)){
   
   # Get last result of each test for summary/final
   last<-tail(iters, n=1)
-  #print(last)
-  row1<-data.frame(iterations,rows,cols,prepopData[names(prepopData)=='Z'],prepopData[names(prepopData)=='H'],prepopData[names(prepopData)=='I'],last[1,'zombie'],last[1,'human'],last[1,'immune'])
+  row1<-data.frame(iterations,rows,cols,prepopData[names(prepopData)=='Z'],prepopData[names(prepopData)=='H'],immStart,last[1,'zombie'],last[1,'human'],last[1,'immune'])
   names(row1)<-dfnames
   row0<-rbind(row0,row1)
   
