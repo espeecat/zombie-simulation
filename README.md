@@ -1,6 +1,10 @@
 # zombie-simulation
 Zombie simulation with R
 
+NB: This project was initiated in December 2019 following the Royal Institution Christmas lectures with Hannah Fry. I wanted to look at how immunity protects those without immunity and took the simple case of a zombie virus. This project is not intended to cause any offence with regard to current events.  
+
+https://www.rigb.org/christmas-lectures/2019-secrets-and-lies
+
 Using R to simulate the spread of a zombie infection with different levels of immunity in the population.
 
 ![Sample of simulation showing Zombie infection](sample.gif?raw=true "Sample Zombie simulation") 

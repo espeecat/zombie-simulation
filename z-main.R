@@ -48,6 +48,14 @@ for (rowNum in 1:nrow(testParams)){
   } else{
     immStart<-prepopData[names(prepopData)=='I']
   }
+  
+  print(testName)
+  
+  # skip some tests
+  print(rowNum)
+  if(rowNum<53){
+    next
+  }
 
   # Do iterartions for each test
   iters<-fn_doIterations(testName,population, rows,cols)
@@ -59,13 +67,20 @@ for (rowNum in 1:nrow(testParams)){
   row1<-data.frame(iterations,rows,cols,prepopData[names(prepopData)=='Z'],prepopData[names(prepopData)=='H'],immStart,last[1,'zombie'],last[1,'human'],last[1,'immune'])
   names(row1)<-dfnames
   row0<-rbind(row0,row1)
+  write.csv(row0, file = "./data/z-data-interim.csv", row.names =TRUE)
+  
   
 }
 # remove dummy row
 # row0 is the final summary for each test
 # after all steps
 row0 = row0[-1,]
+write.csv(row0, file = "./data/z-data.csv", row.names =TRUE)
 
+
+iterAll
+iterAll = iterAll[-1,]
+write.csv(iterAll, file = "./data/z-allsteps.csv", row.names =TRUE)
 # ********************************* 
 # End
 # *********************************  
